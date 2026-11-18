@@ -4,45 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nicolás Carrasco · N.C. Energy SpA</title>
-<meta name="description" content="Nicolás Carrasco, instalador eléctrico certificado. N.C. Energy SpA: instalaciones eléctricas. Llámame, escríbeme por WhatsApp o guarda mi contacto.">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Nicolás Carrasco, instalador eléctrico autorizado SEC Clase B. N.C. Energy SpA: instalaciones eléctricas. Llámame, escríbeme por WhatsApp o guarda mi contacto.">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light only">
 <!-- Vista previa al compartir por WhatsApp -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Nicolás Carrasco · N.C. Energy SpA">
-<meta property="og:description" content="Instalador eléctrico certificado · Instalaciones eléctricas">
+<meta property="og:description" content="Instalador eléctrico autorizado SEC Clase B · Instalaciones eléctricas">
 <meta property="og:image" content="https://felipeproyectos.github.io/ncenergy/icono-ncenergy.png">
 <link rel="icon" type="image/png" href="icono-ncenergy.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f3f2ee;
+    --bg:#ffffff;
     --card:#ffffff;
     --ink:#121212;
     --muted:#6b6b66;
-    --line:#e6e4dd;
+    --line:#e9e7e1;
     --hero:#0d0d0d;
     --volt:#ffc61a;        /* amarillo eléctrico */
+    --volt-deep:#d79f00;
     --volt-ink:#1a1400;
     --wa:#1fa855;
     --chip:#f6f5f1;
     --shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(0,0,0,.18);
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#0b0b0b;
-      --card:#161616;
-      --ink:#f2f2ef;
-      --muted:#a3a39d;
-      --line:#2a2a28;
-      --chip:#1e1e1d;
-      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
-    }
-  }
+  /* Siempre fondo blanco, aunque el teléfono esté en modo oscuro */
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;color-scheme:light;scroll-behavior:smooth}
+  #pagos{scroll-margin-top:12px}
   body{
     font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
     background:var(--bg);color:var(--ink);
@@ -50,19 +43,20 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
   .wrap{max-width:460px;margin:0 auto;padding:0 16px 40px}
 
   /* ---------- HERO ---------- */
   .hero{
-    position:relative;background:var(--hero);
+    position:relative;background:#fff;
     margin:0 -16px;padding:30px 24px 112px;
     overflow:hidden;text-align:center;
   }
   .hero::before{ /* rejilla sutil tipo plano eléctrico */
     content:"";position:absolute;inset:0;
     background-image:
-      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);
     background-size:22px 22px;
     mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);
     -webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);
@@ -100,12 +94,14 @@
     font-size:30px;letter-spacing:.01em;line-height:1.1;text-transform:uppercase;
   }
   .role{color:var(--muted);font-size:15px;margin-top:6px}
+  .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
   .badge{
-    display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+    display:inline-flex;align-items:center;gap:6px;
     padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:600;
-    background:rgba(255,198,26,.16);color:var(--ink);border:1px solid rgba(255,198,26,.55);
+    background:var(--chip);border:1px solid var(--line);
   }
-  .badge svg{width:14px;height:14px;color:#d79f00}
+  .badge.sec{background:var(--volt);border-color:var(--volt);color:var(--volt-ink)}
+  .badge svg{width:14px;height:14px}
 
   /* ---------- ACCIONES ---------- */
   .actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
@@ -113,7 +109,7 @@
     display:flex;flex-direction:column;align-items:center;gap:7px;
     padding:12px 4px;border-radius:14px;background:var(--chip);
     border:1px solid var(--line);font-size:12px;font-weight:500;
-    transition:transform .15s ease,background .15s ease;
+    transition:transform .15s ease;
   }
   .act:active{transform:scale(.96)}
   .act .ic{
@@ -134,6 +130,21 @@
   .cta:active{transform:scale(.98)}
   .cta svg{width:20px;height:20px}
 
+  /* ---------- FRANJA DE CONFIANZA ---------- */
+  .trust{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    margin-top:14px;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .trust div{padding:14px 6px;text-align:center}
+  .trust div + div{border-left:1px solid var(--line)}
+  .trust b{
+    display:block;font-family:Oswald,Inter,sans-serif;font-weight:600;
+    font-size:19px;letter-spacing:.02em;text-transform:uppercase;
+  }
+  .trust b em{font-style:normal;color:var(--volt-deep)}
+  .trust span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.3}
+
   /* ---------- SECCIONES ---------- */
   section.box{
     background:var(--card);border:1px solid var(--line);border-radius:20px;
@@ -147,16 +158,17 @@
   .box h2::before{
     content:"";width:4px;height:18px;border-radius:2px;background:var(--volt);
   }
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{
-    font-size:13.5px;padding:8px 12px;border-radius:999px;
+
+  .services{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .services li{
+    display:flex;align-items:flex-start;gap:8px;
+    font-size:13.5px;line-height:1.3;padding:11px 10px;border-radius:12px;
     background:var(--chip);border:1px solid var(--line);
   }
+  .services svg{flex:none;width:15px;height:15px;color:var(--volt-deep);margin-top:1px}
 
   .contact-list{list-style:none;display:grid;gap:2px}
-  .contact-list a{
-    display:flex;align-items:center;gap:12px;padding:10px 4px;border-radius:12px;
-  }
+  .contact-list a{display:flex;align-items:center;gap:12px;padding:10px 4px;border-radius:12px}
   .contact-list .ic{
     flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
     background:var(--chip);border:1px solid var(--line);
@@ -165,33 +177,84 @@
   .contact-list small{display:block;color:var(--muted);font-size:12px}
   .contact-list span{font-weight:500;font-size:14.5px;word-break:break-all}
 
-  /* Datos de transferencia */
-  .bank{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .row{
-    display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:11px 14px;border-bottom:1px solid var(--line);background:var(--chip);
+  /* ---------- PAGOS: tarjeta bancaria ---------- */
+  .methods{display:flex;gap:8px;margin-bottom:14px}
+  .method{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+    padding:10px;border-radius:12px;font-size:13.5px;font-weight:600;
+    background:var(--chip);border:1px solid var(--line);
   }
-  .row:last-child{border-bottom:0}
-  .row small{display:block;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
-  .row b{font-weight:600;font-size:14.5px;word-break:break-word}
+  .method svg{width:17px;height:17px;color:var(--volt-deep)}
+
+  .bankcard{
+    position:relative;overflow:hidden;color:#f4f4f0;
+    border-radius:18px;padding:18px 18px 16px;
+    background:
+      radial-gradient(120% 90% at 100% 0%,rgba(255,198,26,.22),transparent 55%),
+      linear-gradient(150deg,#1d1d1b 0%,#0c0c0c 70%);
+    border:1px solid rgba(255,198,26,.28);
+    box-shadow:0 14px 30px -14px rgba(0,0,0,.6);
+  }
+  .bankcard::after{ /* rayo de fondo */
+    content:"";position:absolute;right:-18px;bottom:-26px;width:150px;height:150px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffc61a' d='M13 2 4 14h7l-1 8 9-12h-7z'/%3E%3C/svg%3E") center/contain no-repeat;
+    opacity:.07;pointer-events:none;
+  }
+  .bc-top{display:flex;justify-content:space-between;align-items:center}
+  .bc-bank{font-weight:700;font-size:15px;letter-spacing:.01em}
+  .bc-type{font-size:11.5px;color:#bdbdb6;margin-top:1px}
+  .chipgold{
+    width:38px;height:28px;border-radius:6px;
+    background:linear-gradient(135deg,#ffe28a,#d9a400 60%,#ffd35c);
+    position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);
+  }
+  .chipgold::before{
+    content:"";position:absolute;inset:6px 9px;border:1px solid rgba(0,0,0,.25);border-radius:3px;
+  }
+  .bc-label{font-size:10.5px;color:#a9a9a2;text-transform:uppercase;letter-spacing:.08em}
+  .bc-number{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    margin:18px 0 14px;
+  }
+  .bc-number b{
+    display:block;font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:600;
+    font-size:22px;letter-spacing:.06em;margin-top:2px;
+  }
+  .bc-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+  .bc-bottom b{display:block;font-weight:600;font-size:14px;margin-top:2px}
+  .bc-bottom .mono{font-family:"JetBrains Mono",ui-monospace,monospace;letter-spacing:.03em}
+  .bc-rut{display:flex;align-items:flex-end;gap:8px}
   .copy{
-    flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
-    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;cursor:pointer;
+    flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;cursor:pointer;
+    border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:var(--volt);
   }
   .copy svg{width:16px;height:16px}
-  .btn{
-    width:100%;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;
-    padding:13px;border-radius:14px;font:600 14.5px Inter,sans-serif;cursor:pointer;
-    background:var(--hero);color:#fff;border:0;
+  .copy:active{transform:scale(.94)}
+
+  .pay-email{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    margin-top:10px;padding:11px 14px;border-radius:14px;
+    background:var(--chip);border:1px solid var(--line);
   }
-  @media (prefers-color-scheme:dark){ .btn{background:#262624} }
-  .btn svg{width:18px;height:18px}
-  .note{font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
+  .pay-email small{display:block;color:var(--muted);font-size:11.5px}
+  .pay-email b{font-weight:600;font-size:14px;word-break:break-all}
+  .pay-email .copy{border-color:var(--line);background:var(--card);color:var(--ink)}
+
+  .pay-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 10px;border-radius:14px;font-weight:600;font-size:14px;cursor:pointer;
+    border:0;text-align:center;line-height:1.2;
+  }
+  .btn svg{flex:none;width:18px;height:18px}
+  .btn.primary{background:var(--volt);color:var(--volt-ink)}
+  .btn.wa{background:var(--wa);color:#fff}
+  .btn:active{transform:scale(.98)}
 
   .share{
     width:100%;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;
-    padding:13px;border-radius:14px;font:500 14.5px Inter,sans-serif;cursor:pointer;
-    background:transparent;color:var(--ink);border:1px dashed var(--muted);
+    padding:13px;border-radius:14px;font-weight:500;font-size:14.5px;cursor:pointer;
+    background:transparent;border:1px dashed var(--muted);
   }
   .share svg{width:18px;height:18px}
 
@@ -201,10 +264,10 @@
 
   .toast{
     position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
-    background:var(--hero);color:#fff;padding:10px 16px;border-radius:999px;
-    font-size:13.5px;font-weight:500;opacity:0;pointer-events:none;
+    background:#111;color:#fff;padding:10px 16px;border-radius:999px;
+    font-size:13.5px;font-weight:500;opacity:0;pointer-events:none;white-space:nowrap;
     transition:all .25s ease;box-shadow:0 10px 30px -8px rgba(0,0,0,.5);
-    display:flex;gap:8px;align-items:center;
+    display:flex;gap:8px;align-items:center;z-index:10;
   }
   .toast.show{opacity:1;transform:translate(-50%,0)}
   .toast svg{width:16px;height:16px;color:var(--volt)}
@@ -215,6 +278,8 @@
   @media (max-width:360px){
     .act{font-size:11px}
     .act .ic{width:36px;height:36px}
+    .bc-number b{font-size:19px}
+    .services{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -223,7 +288,7 @@
 <!-- Íconos reutilizables -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
-  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.150c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.380c0-4.54 3.7-8.24 8.24-8.24 4.540 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.470-.72-1.690-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
   <symbol id="i-user-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
@@ -231,12 +296,16 @@
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+  <symbol id="i-cash"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10M19 21V10M9.5 21V10M14.5 21V10M2 10l10-6 10 6"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 2-2 2 2 3-2 3 2V2l-3 2-3-2-2 2-2-2-3 2z"/><path d="M8 9h8M8 13h6"/></symbol>
 </svg>
 
 <div class="wrap">
 
   <header class="hero">
-    <img class="logo" src="logo-ncenergy-blanco.png" alt="N.C. Energy SpA · Instalaciones eléctricas" width="590" height="352">
+    <img class="logo" src="logo-ncenergy.png" alt="N.C. Energy SpA · Instalaciones eléctricas" width="590" height="352">
     <div class="current" aria-hidden="true"></div>
   </header>
 
@@ -244,8 +313,11 @@
     <div class="card">
       <div class="avatar" role="img" aria-label="Logo N.C. Energy"></div>
       <h1>Nicolás Carrasco</h1>
-      <p class="role">Instalador Eléctrico Certificado</p>
-      <span class="badge"><svg><use href="#i-shield"/></svg>N.C. Energy SpA</span>
+      <p class="role">Instalador Eléctrico Autorizado</p>
+      <div class="badges">
+        <span class="badge sec"><svg><use href="#i-shield"/></svg>Licencia SEC · Clase B</span>
+        <span class="badge">N.C. Energy SpA</span>
+      </div>
 
       <nav class="actions" aria-label="Contacto rápido">
         <a class="act" href="tel:+56966311950">
@@ -257,29 +329,85 @@
         <a class="act" href="mailto:n.c.energy@gmail.com">
           <span class="ic"><svg><use href="#i-mail"/></svg></span>Correo
         </a>
-        <a class="act" href="nicolas-carrasco.vcf" download="Nicolas-Carrasco-NC-Energy.vcf">
-          <span class="ic"><svg><use href="#i-user-plus"/></svg></span>Guardar
+        <a class="act" href="#pagos">
+          <span class="ic"><svg><use href="#i-card"/></svg></span>Pagos
         </a>
       </nav>
 
-      <a class="cta" href="https://wa.me/56966311950?text=Hola%20Nicol%C3%A1s%2C%20te%20contacto%20desde%20tu%20tarjeta.%20Quisiera%20cotizar%20un%20trabajo%20el%C3%A9ctrico%3A%20" target="_blank" rel="noopener">
-        <svg><use href="#i-bolt"/></svg>Solicitar cotización
+      <a class="cta" href="nicolas-carrasco.vcf" download="Nicolas-Carrasco-NC-Energy.vcf">
+        <svg><use href="#i-user-plus"/></svg>Guardar contacto
       </a>
+    </div>
+
+    <div class="trust" aria-label="Respaldo">
+      <div><b>Clase <em>B</em></b><span>Licencia SEC</span></div>
+      <div><b>SpA</b><span>Empresa formal</span></div>
+      <div><b>TE1</b><span>Declaración SEC</span></div>
     </div>
 
     <section class="box">
       <h2>Servicios</h2>
       <!-- Ajusta esta lista con los servicios que realmente ofrece Nicolás -->
-      <div class="chips">
-        <span class="chip">Instalaciones domiciliarias</span>
-        <span class="chip">Instalaciones comerciales</span>
-        <span class="chip">Tableros eléctricos</span>
-        <span class="chip">Empalmes y aumento de potencia</span>
-        <span class="chip">Declaración SEC (TE1)</span>
-        <span class="chip">Iluminación interior y exterior</span>
-        <span class="chip">Puesta a tierra</span>
-        <span class="chip">Reparación de fallas</span>
-        <span class="chip">Mantención preventiva</span>
+      <ul class="services">
+        <li><svg><use href="#i-bolt"/></svg>Instalaciones domiciliarias</li>
+        <li><svg><use href="#i-bolt"/></svg>Instalaciones comerciales</li>
+        <li><svg><use href="#i-bolt"/></svg>Tableros eléctricos</li>
+        <li><svg><use href="#i-bolt"/></svg>Empalmes y aumento de potencia</li>
+        <li><svg><use href="#i-bolt"/></svg>Declaración SEC (TE1)</li>
+        <li><svg><use href="#i-bolt"/></svg>Iluminación interior y exterior</li>
+        <li><svg><use href="#i-bolt"/></svg>Puesta a tierra</li>
+        <li><svg><use href="#i-bolt"/></svg>Reparación de fallas</li>
+      </ul>
+    </section>
+
+    <section class="box" id="pagos">
+      <h2>Datos de pago</h2>
+
+      <div class="methods">
+        <span class="method"><svg><use href="#i-cash"/></svg>Efectivo</span>
+        <span class="method"><svg><use href="#i-bank"/></svg>Transferencia</span>
+      </div>
+
+      <div class="bankcard">
+        <div class="bc-top">
+          <div>
+            <div class="bc-bank">BancoEstado</div>
+            <div class="bc-type">Chequera Electrónica</div>
+          </div>
+          <div class="chipgold" aria-hidden="true"></div>
+        </div>
+
+        <div class="bc-number">
+          <div>
+            <span class="bc-label">N° de cuenta</span>
+            <b data-field="N° de cuenta">90274549041</b>
+          </div>
+          <button class="copy" type="button" data-copy="90274549041" data-label="N° de cuenta" aria-label="Copiar número de cuenta"><svg><use href="#i-copy"/></svg></button>
+        </div>
+
+        <div class="bc-bottom">
+          <div>
+            <span class="bc-label">Titular</span>
+            <b>NC Energy SpA</b>
+          </div>
+          <div class="bc-rut">
+            <div>
+              <span class="bc-label">RUT</span>
+              <b class="mono">77.984.741-1</b>
+            </div>
+            <button class="copy" type="button" data-copy="77.984.741-1" data-label="RUT" aria-label="Copiar RUT"><svg><use href="#i-copy"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pay-email">
+        <div><small>Email de confirmación</small><b>n.c.energyspa@gmail.com</b></div>
+        <button class="copy" type="button" data-copy="n.c.energyspa@gmail.com" data-label="Email" aria-label="Copiar email de confirmación"><svg><use href="#i-copy"/></svg></button>
+      </div>
+
+      <div class="pay-actions">
+        <button class="btn primary" type="button" id="copyAll"><svg><use href="#i-copy"/></svg>Copiar datos</button>
+        <a class="btn wa" href="https://wa.me/56966311950?text=Hola%20Nicol%C3%A1s%2C%20te%20env%C3%ADo%20el%20comprobante%20de%20transferencia." target="_blank" rel="noopener"><svg><use href="#i-receipt"/></svg>Enviar comprobante</a>
       </div>
     </section>
 
@@ -297,29 +425,6 @@
       </ul>
     </section>
 
-    <!-- PAGOS: oculta hasta tener los datos reales. Para mostrarla, borra el atributo hidden. -->
-    <section class="box" id="pagos" hidden>
-      <h2>Datos de transferencia</h2>
-      <!-- REEMPLAZA los valores entre corchetes con los datos reales.
-           El botón "Copiar todo" copia exactamente lo que se ve aquí. -->
-      <div class="bank" id="bank">
-        <div class="row"><div><small>Titular</small><b>N.C. Energy SpA</b></div>
-          <button class="copy" type="button" aria-label="Copiar titular"><svg><use href="#i-copy"/></svg></button></div>
-        <div class="row"><div><small>RUT</small><b>[RUT de la empresa]</b></div>
-          <button class="copy" type="button" aria-label="Copiar RUT"><svg><use href="#i-copy"/></svg></button></div>
-        <div class="row"><div><small>Banco</small><b>[Banco]</b></div>
-          <button class="copy" type="button" aria-label="Copiar banco"><svg><use href="#i-copy"/></svg></button></div>
-        <div class="row"><div><small>Tipo de cuenta</small><b>[Cuenta corriente / Vista]</b></div>
-          <button class="copy" type="button" aria-label="Copiar tipo de cuenta"><svg><use href="#i-copy"/></svg></button></div>
-        <div class="row"><div><small>N° de cuenta</small><b>[Número de cuenta]</b></div>
-          <button class="copy" type="button" aria-label="Copiar número de cuenta"><svg><use href="#i-copy"/></svg></button></div>
-        <div class="row"><div><small>Correo</small><b>n.c.energy@gmail.com</b></div>
-          <button class="copy" type="button" aria-label="Copiar correo"><svg><use href="#i-copy"/></svg></button></div>
-      </div>
-      <button class="btn" type="button" id="copyAll"><svg><use href="#i-copy"/></svg>Copiar todos los datos</button>
-      <p class="note">Después de transferir, envía el comprobante por WhatsApp.</p>
-    </section>
-
     <button class="share" type="button" id="share"><svg><use href="#i-share"/></svg>Compartir esta tarjeta</button>
   </main>
 
@@ -332,39 +437,45 @@
 <div class="toast" id="toast" role="status" aria-live="polite"><svg><use href="#i-check"/></svg><span>Copiado</span></div>
 
 <script>
+  // Texto que se copia con "Copiar datos" (formato que entienden las apps bancarias)
+  const DATOS_TRANSFERENCIA = [
+    'Nombre: NC Energy SpA',
+    'RUT: 77.984.741-1',
+    'Banco: BancoEstado',
+    'Tipo de cuenta: Chequera Electrónica / Cuenta Vista',
+    'N° de cuenta: 90274549041',
+    'Email: n.c.energyspa@gmail.com'
+  ].join('\n');
+
   const toast = document.getElementById('toast');
   let t;
   function showToast(msg){
     toast.querySelector('span').textContent = msg;
     toast.classList.add('show');
-    clearTimeout(t); t = setTimeout(()=>toast.classList.remove('show'), 1800);
+    clearTimeout(t); t = setTimeout(()=>toast.classList.remove('show'), 1900);
   }
   async function copyText(text){
     try { await navigator.clipboard.writeText(text); return true; }
     catch(e){
       const ta = document.createElement('textarea');
       ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
-      document.body.appendChild(ta); ta.select();
-      let ok = false; try { ok = document.execCommand('copy'); } catch(_){}
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+      let ok = true; try { document.execCommand('copy'); } catch(_){ ok = false; }
       ta.remove(); return ok;
     }
   }
-  document.querySelectorAll('#bank .row').forEach(row=>{
-    row.querySelector('.copy').addEventListener('click', async ()=>{
-      const label = row.querySelector('small').textContent;
-      const ok = await copyText(row.querySelector('b').textContent.trim());
-      showToast(ok ? label + ' copiado' : 'No se pudo copiar');
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const ok = await copyText(btn.dataset.copy);
+      showToast(ok ? btn.dataset.label + ' copiado' : 'No se pudo copiar');
     });
   });
   document.getElementById('copyAll').addEventListener('click', async ()=>{
-    const text = [...document.querySelectorAll('#bank .row')]
-      .map(r => r.querySelector('small').textContent + ': ' + r.querySelector('b').textContent.trim())
-      .join('\n');
-    const ok = await copyText(text);
+    const ok = await copyText(DATOS_TRANSFERENCIA);
     showToast(ok ? 'Datos de transferencia copiados' : 'No se pudo copiar');
   });
   document.getElementById('share').addEventListener('click', async ()=>{
-    const data = { title:'Nicolás Carrasco · N.C. Energy SpA', text:'Instalador eléctrico certificado', url:location.href };
+    const data = { title:'Nicolás Carrasco · N.C. Energy SpA', text:'Instalador eléctrico autorizado SEC Clase B', url:location.href };
     if (navigator.share) { try { await navigator.share(data); } catch(_){} }
     else { const ok = await copyText(location.href); showToast(ok ? 'Enlace copiado' : 'No se pudo copiar'); }
   });
